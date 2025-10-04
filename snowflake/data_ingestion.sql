@@ -31,9 +31,17 @@ CREATE OR REPLACE TABLE comments (
   likes NUMBER
 );
 
--- Load your files into stage before you continue!
+-- ----------------------------------------------------------------------------------
+-- BEFORE YOU CONTINUE:
+-- Load your json files into stage:
+-- In Snowsight go to: Ingestion > Load files into a Stage > Upload your files
+-- Choose schema: YOUTUBE_TRENDS.PUBLIC
+-- Choose stage: YOUTUBE_STAGE
+-- Upload
+
 -- Check that the files have been successfully uploaded to stage
 ls @youtube_stage; 
+-- ----------------------------------------------------------------------------------
 
 COPY INTO videos
 FROM (
