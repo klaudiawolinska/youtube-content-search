@@ -72,8 +72,8 @@ youtube-content-search/
 
 ## 📸 Demo (Snowsight)
 
-![](./assets/Screenshot 2025-10-03 at 14.41.52.png)
-![](./assets/Screenshot 2025-10-03 at 14.42.05.png)
+![](./assets/Screenshot_2025-10-03_at_14_41_52.png)
+![](./assets/Screenshot_2025-10-03_at_14_42_05.png)
 
 * Example search: *“Trending videos about AI”*
 * Example search: *“Comments related to music”*
