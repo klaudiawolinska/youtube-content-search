@@ -33,7 +33,7 @@ This project collects trending YouTube videos + comments across multiple countri
    * Create a **Cortex Search Service** on top of comments and video metadata.
    * Enable **semantic queries** like:
 
-     > “What are people saying about self-development videos in Japan?”
+     > “What music are people excited about right now?”
 
 4. **Streamlit App (Snowsight)**
 
@@ -47,7 +47,7 @@ This project collects trending YouTube videos + comments across multiple countri
 
 ```
 youtube-content-search/
-├── data/                    # Pre-collected sample data
+├── sample_data/             # Pre-collected sample data
 │   ├── youtube_trending_videos.jsonl
 │   └── youtube_video_comments.jsonl
 |
@@ -57,8 +57,9 @@ youtube-content-search/
 │   ├── requirements.txt
 │   └── Dockerfile           
 │
-├── ingestion/               # Snowflake SQL script
-│   └── data_ingestion.sql
+├── snowflake/               # Snowflake SQL scripts
+│   ├── data_ingestion.sql
+│   └── cortex_search_service.sql
 │
 ├── app/                     # Streamlit app (runs in Snowsight)
 │   └── streamlit_app.py
@@ -71,10 +72,11 @@ youtube-content-search/
 
 ## 📸 Demo (Snowsight)
 
-*(add screenshots or a short GIF of your app here)*
+![](./assets/Screenshot 2025-10-03 at 14.41.52.png)
+![](./assets/Screenshot 2025-10-03 at 14.42.05.png)
 
-* Example search: *“Trending videos about AI in the US”*
-* Example search: *“Comments in Brazil related to music”*
+* Example search: *“Trending videos about AI”*
+* Example search: *“Comments related to music”*
 
 ---
 
@@ -86,7 +88,7 @@ Build the Docker image:
 
 ```bash
 cd extraction
-docker build -t youtube-extraction ./extraction
+docker build -t youtube-extraction .
 ```
 
 Run the extractor (replace `your_api_key_here` with your YouTube Data API key):
@@ -107,14 +109,14 @@ This saves raw data into:
 
 If you don’t want to set up the YouTube API, you can use the pre-collected sample data included in this repo:
 
-- `data/youtube_trending_videos.jsonl`
-- `data/youtube_video_comments.jsonl`
+- `sample_data/youtube_trending_videos.jsonl`
+- `sample_data/youtube_video_comments.jsonl`
 
 This lets you try the Snowflake + Cortex parts of the project right away.
 
 ### 2. Load into Snowflake
 
-Run the `ingestion/data_ingestion.sql` SQL script inside **Snowsight Worksheets**.
+Run the `snowflake/data_ingestion.sql` and `snowflake/cortex_search_service.sql` SQL scripts inside **Snowsight Worksheets**.
 
 ### 3. Launch Streamlit in Snowsight
 
